@@ -44,6 +44,7 @@ public class bank {
         }
     }
     public void displayAccounts(){
+        System.out.println("========== Des Compte ==============");
         for (account a : accounts){
             client ClientAccount=null;
             for(client c : clients){
@@ -52,18 +53,27 @@ public class bank {
                     break;
                 }
             }
+            System.out.println("=========== Account Infoes ==============");
             System.out.println("Account Numero : " + a.getNumeroAccount());
             System.out.println("Date ouverture : " + a.getDateOuverture());
             System.out.println("Solde : " + a.getSolde());
 
+            System.out.println("============= Client Infoes ==============");
+
             if(ClientAccount!=null){
                 System.out.println("Client Nom : "+ClientAccount.getNome()+"\n"
-                        + " Client Prenom : " + ClientAccount.getPrenom()+"\n"
-                        + " Client Numero : " + ClientAccount.getNumeroClient());
+                        + "Client Prenom : " + ClientAccount.getPrenom()+"\n"
+                        + "Client Numero : " + ClientAccount.getNumeroClient());
             }else {
                 System.out.println("Client : INTROVABLE");
             }
-    }  System.out.println("Pas encore de Compte");
+    }
+        System.out.println("========== Des Compte d'épargne ==============");
+        for(savingAccount s: savingAccounts){
+            System.out.println("Client Numero : " +s.getNumeroClient());
+            System.out.println("Account Numero: "+s.getNumeroAccount());
+            System.out.println("Account Sold :"+s.getSolde());
+        }
     }
 
    public void AddSavingsAccount(savingAccount a){
@@ -73,8 +83,8 @@ public class bank {
                 System.out.println("Ajouté avec succès");
                 return;
             }
-            System.out.println("\u001B[31m ERROR Ce client n'est pas déjà dans le système \u001B[0m");
         }
+       System.out.println("\u001B[31m ERROR Ce client n'est pas déjà dans le système \u001B[0m");
    }
    public void displaySavingAcounts(){
         for(savingAccount a : savingAccounts){
@@ -91,21 +101,20 @@ public class bank {
              }}
    }
     public float calculateInterest(int accNumber){
-        float interest = 02F;
+        float interest = 0F;
         for(savingAccount s : savingAccounts){
             if(s.getNumeroAccount()==accNumber){
                 interest = s.getSolde()*s.getTauxInteret()/100;
                 s.setSolde(s.getSolde()+interest);
             }
-                System.out.println("nouveau solde est ... "+s.getSolde());
+                System.out.println("nouveau solde est ... "+s.getSolde() +"DH");
         }
         return interest;
     }
     public void displaySolde(int Account_number){
-
         for (account a : accounts){
             if(a.getNumeroAccount()==Account_number){
-                System.out.println("solde d’un compte bancaire '"+Account_number+"' : "+a.getSolde());
+                System.out.println("solde d’un compte bancaire '"+Account_number+"' : "+a.getSolde()+" DH");
                 break;
             } else {
                 System.out.println("Compte non trouvé");
@@ -148,6 +157,5 @@ public class bank {
            accounts.remove(Account);
            System.out.println("Compte supprimé.");
        }
-
-
-}}
+}
+}

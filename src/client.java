@@ -4,7 +4,7 @@
         private int numeroClient;
         private float solde;
 
-        public client( String nome, String prenom, String dateNaissance, String email,int numeroClient, float solde) {
+        public client( String nome, String prenom, String dateNaissance, String email,int numeroClient) {
             super(nome,prenom,dateNaissance,email);
             this.numeroClient = numeroClient;
             this.solde = solde;

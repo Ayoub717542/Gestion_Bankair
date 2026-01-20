@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -6,22 +7,25 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int choix;
         do {
+            try {
+
+
         // Display menu
         System.out.println("===== Banque Management System =====");
-        System.out.println("1. Ajouter Un Client ");
-        System.out.println("2. Ajouter Un Account");
-        System.out.println("3. Ajouter Un Saving Account");
-        System.out.println("4. Afficher Accounts ");
-        System.out.println("5. Afficher Clients");
-        System.out.println("6. Afficher Saving Accounts");
-        System.out.println("7. Afficher Solde");
-        System.out.println("8. Déposer de l’argent");
-        System.out.println("9. Déposer de l’argent Compte d'épargne");
+        System.out.println("1.  Ajouter Un Client ");
+        System.out.println("2.  Ajouter Un Account");
+        System.out.println("3.  Ajouter Un Compte d'épargne");
+        System.out.println("4.  Afficher Accounts ");
+        System.out.println("5.  Afficher Clients");
+        System.out.println("6.  Afficher ");
+        System.out.println("7.  Afficher Solde");
+        System.out.println("8.  Déposer de l’argent");
+        System.out.println("9.  Déposer de l’argent Compte d'épargne");
         System.out.println("10. Retirer de l’argent ");
-        System.out.println("11. Retirer de Saving Account l’argent ");
+        System.out.println("11. Retirer de Compte d'épargne l’argent ");
         System.out.println("12. Supprimer un compte ");
-        System.out.println("13. Calulate Saving Account intereset ");
-        System.out.println("14. Exit");
+        System.out.println("13. Calulate Compte d'épargne intereset ");
+        System.out.println("0. Exit");
         System.out.print("Enter your choice: ");
         choix = input.nextInt();
             switch (choix) {
@@ -36,9 +40,7 @@ public class Main {
                     String Email = input.next();
                     System.out.print("Enter Client Numero: ");
                     int Nclient = input.nextInt();
-                    System.out.print("Enter Client Sold: ");
-                    float Sold = input.nextFloat();
-                    client client = new client (Nom,Prenom,DateNaissence,Email,Nclient,Sold);
+                    client client = new client (Nom,Prenom,DateNaissence,Email,Nclient);
                     Bank.addClient(client);
                     break;
                 case 2:
@@ -115,10 +117,15 @@ public class Main {
                     System.out.println("Enter Saving Account Number :");
                     int numberSavingAccount=input.nextInt();
                     Bank.calculateInterest(numberSavingAccount);
-                case 14:
+                case 0:
                     break;
                 default:
                     System.out.println("Invalid choice!.");
+            }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input");
+                input.nextLine();
+                choix=-1;
             }
             System.out.println();
         } while (choix != 0);

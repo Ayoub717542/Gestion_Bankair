@@ -13,6 +13,8 @@ public class account {
     public void setSolde(float amount) {
         if (amount > 0){
             solde += amount;
+        }else {
+            System.out.println("Solde invalide");
         }
     }
     public void Setwithdrawing(float amount) {
