@@ -75,7 +75,6 @@ public class bank {
             System.out.println("Account Sold :"+s.getSolde());
         }
     }
-
    public void AddSavingsAccount(savingAccount a){
         for(client c : clients){
             if(c.getNumeroClient()==a.getNumeroClient()){
@@ -137,7 +136,6 @@ public class bank {
         }
         System.out.println("Retrait '"+amount+" DH' réussi");
     }
-
     public void WithdrawingSaving(int Account_number , float amount){
         for (savingAccount a : savingAccounts){
             if(a.getNumeroAccount()== Account_number){
